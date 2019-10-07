@@ -7,7 +7,7 @@ Run `json-server db.json --watch --port 3003` to run your backend server on port
 # Deliverables
 ### A. Viewing All Employees
 1. On page load, show the list of employees by *full name* in the `sidebar` div. It should look like `LastName, FirstName`.
-2. When an employee name is clicked, all of their info should be shown in the `info-box` div. This includes:
+2. When an employee name is clicked, all of their info should be shown in the `info-box` div (Show Page). This includes:
     - Their avatar
     - Their full name
     - Their job title
@@ -17,9 +17,10 @@ Run `json-server db.json --watch --port 3003` to run your backend server on port
 Be sure to look over the data structure in the json file.
 ### B. Adding New Employees
 Nice work! Your manager is impressed. You're now tasked with adding the ability to add newly-hired employees to the Employee Tracker.
-3. When I click a link on the top navbar, the `info-box` changes to a form.
+3. When I click the `+` button, the contents of `employee-info` changes to a form.
 4. Submission of this form adds the new employee to the database.
-5. After the employee is successfully added to the database, 
+5. After the employee is successfully added to the database, their name is added to the sidebar.
+6. The form is immediately replaced with the new employee's info (Show Page).
 
 Keep the names in the sidebar in order of last name.
 Have selected name light up as active.

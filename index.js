@@ -32,6 +32,7 @@ const forEachObject = object => {
         infoBox.innerHTML = `
         <img src="${object.avatar}" alt="avatar of ${object.firstName} ${object.lastName}">
         <h1>${object.firstName} ${object.lastName}</h1>
+        <h6>EIN: ${object.ein}</h6>
         <h5>${object.job.title}</h5>
         <p>${object.job.description}</p>
         `

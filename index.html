@@ -11,6 +11,10 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
     <link rel="stylesheet" type="text/css" href="index.css" />
     <script type="text/javascript" src="index.js"></script>
 
@@ -28,7 +32,12 @@
         <br>
         <div id='sidebar'>
             <br>
-            <h3>Employees</h3>
+            <h3>
+                Employees
+                <a class="btn-floating btn-large waves-effect waves-light red" id='new-button'>
+                    <i class="material-icons">add</i>
+                </a>
+            </h3>
             <ul id='employee-list' class='collection'>
             </ul>
         </div>
