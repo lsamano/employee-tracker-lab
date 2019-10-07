@@ -10,21 +10,32 @@
     
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="text/javascript" src="index.js"></script>
 
     <title>Employee Tracker Lab</title>
 </head>
 <body>
-    <nav class="lime darken-2" role="navigation">
+    <nav class="teal" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">
+            <div id="logo-container" class="brand-logo">
                 Employee Tracker
-            </a>
+            </div>
         </div>
     </nav>
-    <div class='container'>
-        <br><br>
-        
-        hbrthrthrthrth rthrth rthrt hr th rt
+    <div class='container' id='wrapper'>
+        <br>
+        <div id='sidebar'>
+            <br>
+            <h3>Employees</h3>
+            <ul id='employee-list' class='collection'>
+            </ul>
+        </div>
+            <div id='info-box'>
+                <div id='employee-info'></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

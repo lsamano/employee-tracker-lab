@@ -1,0 +1,12 @@
+#wrapper {
+  display: flex;
+}
+
+#sidebar {
+  flex: 0 0 35%;
+}
+
+#info-box {
+  flex: 1;
+  padding: 2em;
+}
