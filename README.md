@@ -6,14 +6,14 @@ Run `json-server db.json --watch --port 3003` to run your backend server on port
 
 # Deliverables
 ### A. Viewing All Employees
-1. On page load, show the list of employees by *full name* in the `sidebar` div. It should look like `LastName, FirstName`.
+1. On page load, show the list of employees by **full name** in the `sidebar` div. It should look like `LastName, FirstName`.
 2. When an employee name is clicked, all of their info should be shown in the `info-box` div (Show Page). This includes:
     - Their avatar
     - Their full name
     - Their job title
     - Their job description
-    - Their EIN (Employee Identification Number)
     - The date they started with the company
+
 Be sure to look over the data structure in the json file.
 
 ### B. Adding New Employees

@@ -23,10 +23,6 @@ makeButtonFunctional = () => {
         <label for="avatar">Avatar URL</label>
       </div>
       <div class="input-field">
-        <input type="text" id="ein" name="ein">
-        <label for="ein">EIN</label>
-      </div>
-      <div class="input-field">
         <input type="text" id="job_title" name="jobTitle">
         <label for="job_title">Job Title</label>
       </div>
@@ -49,10 +45,9 @@ makeButtonFunctional = () => {
       event.preventDefault()
       // Collect data
       submittedForm = event.target
-      const data = {
+      const formInfo = {
         firstName: submittedForm.firstName.value,
         lastName: submittedForm.lastName.value,
-        ein: submittedForm.ein.value,
         job: {
           title: submittedForm.jobTitle.value,
           description: submittedForm.jobDescription.value
@@ -66,20 +61,14 @@ makeButtonFunctional = () => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(formInfo)
       })
       .then(res => res.json())
-      .then(data => {
-        // debugger
-        // Update sidebar and employee-info div
-        forEachObject(data)
-        infoBox.innerHTML = `
-        <img src="${data.avatar}" alt="avatar of ${data.firstName} ${data.lastName}">
-        <h1>${data.firstName} ${data.lastName}</h1>
-        <h6>EIN: ${data.ein}</h6>
-        <h5>${data.job.title}</h5>
-        <p>${data.job.description}</p>
-        `
+      .then(newEmployee => {
+        // Update sidebar 
+        forEachObject(newEmployee)
+        // Update employee-info div
+        showEmployee(newEmployee)
       })
     })
   })
@@ -92,6 +81,48 @@ runTheFetch = () => {
             orderedData = data.sort((a, b) => a.lastName.localeCompare(b.lastName))
             printTheStuff(orderedData)
         })
+}
+
+showEmployee = employee => {
+    const infoBox = document.getElementById("employee-info")
+    infoBox.innerHTML = `
+        <img src="${employee.avatar}" alt="avatar of ${employee.firstName} ${employee.lastName}">
+        <h1>${employee.firstName} ${employee.lastName}</h1>
+        <h6>ID#: ${employee.id}</h6>
+        <h6>Start Date: ${employee.startDate}</h6>
+        <h5>${employee.job.title}</h5>
+        <p>${employee.job.description}</p>
+        <div id='activity-button'>
+        ${employee.active 
+            ? '<a class="waves-effect waves-light btn red">Active (Press to Inactivate)</a>' 
+            : '<a class="waves-effect waves-light btn">Inactive (Press to Reactivate)</a>'
+        }
+        </div>
+        `
+    const activityButton = document.getElementById('activity-button')
+    activityButton.addEventListener('click', event => {
+        // Send PATCH request to toggle activity status
+        fetch(`http://localhost:3003/employees/${employee.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ active: !employee.active })
+        })
+        .then(res => res.json())
+        .then(data => {
+            // setTimeOut is only used here to preserve the waves animation effect; it is not needed
+            setTimeout(() => {
+                activityButton.innerHTML = `${
+                    data.active
+                    ? '<a class="waves-effect waves-light btn red">Active (Press to Inactivate)</a>'
+                    : '<a class="waves-effect waves-light btn">Inactive (Press to Reactivate)</a>'
+                }`
+            }, 500)
+        })
+
+    })
 }
 
 // Run a function to print the stuff
@@ -110,45 +141,8 @@ const forEachObject = object => {
     oneLi.innerText = `${object.lastName}, ${object.firstName}`
 
     // Add click event
-    oneLi.addEventListener('click', event => {
-
-        infoBox.innerHTML = `
-        <img src="${object.avatar}" alt="avatar of ${object.firstName} ${object.lastName}">
-        <h1>${object.firstName} ${object.lastName}</h1>
-        <h6>EIN: ${object.ein}</h6>
-        <h5>${object.job.title}</h5>
-        <p>${object.job.description}</p>
-        `
-    })
+    oneLi.addEventListener('click', event => showEmployee(object))
 
     // Add the li to the navbar
     theNavbar.append(oneLi)
 }
-
-// makeFormFunctional = () => {
-//     const newForm = document.getElementById('new-form')
-
-//     newForm.addEventListener('submit', event => {
-//         event.preventDefault()
-
-//         /////////////////////////
-//         const newObject = {
-//             word: newForm.word.value,
-//             moreInfo: newForm.info.value
-//         }
-//         forEachObject(newObject)
-//         /////////////////////////
-//         fetch('http://localhost:3000/datas', {
-//             method: "POST",
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json'
-//             },
-//             body: JSON.stringify(newObject)
-//         })
-//         // .then(data => data.json())
-
-
-//         newForm.reset()
-//     })
-// }
