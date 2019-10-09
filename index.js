@@ -1,6 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
     runTheFetch()
+    makeButtonFunctional()
 })
+
+makeButtonFunctional = () => {
+  const newButton = document.getElementById('new-button')
+  newButton.addEventListener('click', () => {
+    const infoBox = document.getElementById("employee-info")
+    infoBox.innerHTML = `
+    <h2>New Employee Form</h2>
+    <form>
+      <div class="input-field">
+        <input type="text" id="first_name" name="firstName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="last_name" name="lastName">
+        <label for="last_name">Last Name</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="avatar" name="avatar">
+        <label for="avatar">Avatar URL</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="ein" name="ein">
+        <label for="ein">EIN</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="job_title" name="jobTitle">
+        <label for="job_title">Job Title</label>
+      </div>
+      <div class="input-field">
+        <textarea id="job_desc" name="jobDescription" class="materialize-textarea"></textarea>
+        <label for="job_desc">Job Description</label>
+      </div>
+      <div class="input-field">
+        <input type="date" id="start_date" name="startDate">
+        <label for="start_date">Start Date</label>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit">
+        Submit
+      </button>
+    </form>
+    `
+  })
+}
 
 runTheFetch = () => {
     return fetch('http://localhost:3003/employees')
@@ -28,7 +72,7 @@ const forEachObject = object => {
 
     // Add click event
     oneLi.addEventListener('click', event => {
-        
+
         infoBox.innerHTML = `
         <img src="${object.avatar}" alt="avatar of ${object.firstName} ${object.lastName}">
         <h1>${object.firstName} ${object.lastName}</h1>
