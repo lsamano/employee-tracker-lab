@@ -10,3 +10,7 @@
   flex: 1;
   padding: 2em;
 }
+
+.right-float {
+  float: right;
+}

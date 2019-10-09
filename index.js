@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 makeButtonFunctional = () => {
   const newButton = document.getElementById('new-button')
-  newButton.addEventListener('click', () => {
-    const infoBox = document.getElementById("employee-info")
+  const infoBox = document.getElementById("employee-info")
+  newButton.addEventListener('click', event => {
     infoBox.innerHTML = `
     <h2>New Employee Form</h2>
-    <form>
+    <form id="new-form">
       <div class="input-field">
         <input type="text" id="first_name" name="firstName">
         <label for="first_name">First Name</label>
@@ -38,17 +38,56 @@ makeButtonFunctional = () => {
         <input type="date" id="start_date" name="startDate">
         <label for="start_date">Start Date</label>
       </div>
-      <button class="btn waves-effect waves-light" type="submit">
+      <button class="btn waves-effect waves-light red" type="submit">
         Submit
       </button>
     </form>
     `
+    newForm = document.getElementById('new-form')
+
+    newForm.addEventListener('submit', event => {
+      event.preventDefault()
+      // Collect data
+      submittedForm = event.target
+      const data = {
+        firstName: submittedForm.firstName.value,
+        lastName: submittedForm.lastName.value,
+        ein: submittedForm.ein.value,
+        job: {
+          title: submittedForm.jobTitle.value,
+          description: submittedForm.jobDescription.value
+        },
+        active: true
+      }
+      // Send fetch to backend
+      fetch('http://localhost:3003/employees', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(data => {
+        // debugger
+        // Update sidebar and employee-info div
+        forEachObject(data)
+        infoBox.innerHTML = `
+        <img src="${data.avatar}" alt="avatar of ${data.firstName} ${data.lastName}">
+        <h1>${data.firstName} ${data.lastName}</h1>
+        <h6>EIN: ${data.ein}</h6>
+        <h5>${data.job.title}</h5>
+        <p>${data.job.description}</p>
+        `
+      })
+    })
   })
 }
 
 runTheFetch = () => {
     return fetch('http://localhost:3003/employees')
-        .then(data => data.json())
+        .then(res => res.json())
         .then(data => {
             orderedData = data.sort((a, b) => a.lastName.localeCompare(b.lastName))
             printTheStuff(orderedData)
