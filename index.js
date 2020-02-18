@@ -9,7 +9,7 @@ const makeButtonFunctional = () => {
     newButton.addEventListener('click', event => {
         infoBox.innerHTML = `
     <h2>New Employee Form</h2>
-    <form id="new-form">
+    <form id="new-form" autocomplete="off">
       <div class="input-field">
         <input type="text" id="first_name" name="firstName">
         <label for="first_name">First Name</label>
@@ -52,6 +52,8 @@ const makeButtonFunctional = () => {
                     title: submittedForm.jobTitle.value,
                     description: submittedForm.jobDescription.value
                 },
+                avatar: submittedForm.avatar.value,
+                startDate: submittedForm.startDate.value,
                 active: true
             }
             // Send POST request to backend
@@ -65,7 +67,7 @@ const makeButtonFunctional = () => {
             })
                 .then(res => res.json())
                 .then(newEmployee => {
-                    // Add new employee to bottom of sidebar list 
+                    // Add new employee to bottom of sidebar list
                     forEachObject(newEmployee)
                     // Update employee-info div
                     showEmployee(newEmployee)
