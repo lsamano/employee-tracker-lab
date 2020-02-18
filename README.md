@@ -19,22 +19,22 @@ Be sure to look over the data structure in the json file.
 ### B. Adding New Employees
 Nice work! Your manager is impressed. The company is growing. You're now tasked with adding the ability to add newly-hired employees to the Employee Tracker.
 
-3. When I click the `+` button, the contents of `employee-info` changes to a form.
+3. When I click the `+` button, the contents of the `employee-info` div changes to a form.
 4. Submission of this form adds the new employee to the database. (Note: All new employees' active status is set to `true`.)
 5. After the employee is successfully added to the database, their name is added to the sidebar.
-6. The form is immediately replaced with the new employee's info (Show Page).
+6. Also after successful submission, the form in the `employee-info` div is replaced with the new employee's info (Show Page).
 
 ### C. Updating Employee Status
 Great Work! Unfortunately, the company isn't doing so well and needs to layoff a few individuals. They don't want them deleted from the database completely though. Your final task is to allow the app to toggle active status.
 
 7. Add a button to the employee show page that, when clicked, allows their active status to toggle between true and false.
-8. The user should see the active status changing on click without having to refresh, and the data should persist.
+8. The user should see the active status changing on click without having to refresh or click around, and the data should persist.
 
 ### BONUS
 You're bored one day and decide you want to spice up the app. Maybe try implementing some of the below?
 
-9. The names in the sidebar aren't in order. Try ordering them by last name.
+9. Currently, the names in the sidebar aren't in order. Try ordering them by last name.
 10. This app uses the Materialize CSS framework. Maybe you could incorporate some of its elements to make the app more visually appealing?
 
 # Fin
-You've done amazing work. Unfortunately, the company is filing for bankruptcy. You won't lose what you've learned here though. On to your next endeavor!
+You've done amazing work. Unfortunately, the company is filing for bankruptcy. You won't lose what you've learned here though. Onto your next endeavor!
