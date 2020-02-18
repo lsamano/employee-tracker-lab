@@ -5,6 +5,7 @@ You've been hired as a frontend developer for a startup company. They would like
 Run `json-server db.json --watch --port 3003` to run your backend server on port 3003 (feel free to change your chosen port).
 
 # Deliverables
+![](read-example.gif)
 ### A. Viewing All Employees
 1. On page load, show the list of employees by **full name** in the `employee-list` ul. It should look like `LastName, FirstName`.
 2. When an employee name is clicked, all of their info should be shown in the `employee-info` div (Show Page). This includes:
@@ -17,6 +18,7 @@ Run `json-server db.json --watch --port 3003` to run your backend server on port
 Be sure to look over the data structure in the json file.
 
 ### B. Adding New Employees
+![](create-example.gif)
 Nice work! Your manager is impressed. The company is growing. You're now tasked with adding the ability to add newly-hired employees to the Employee Tracker.
 
 3. When I click the `+` button, the contents of the `employee-info` div changes to a form.
@@ -25,6 +27,7 @@ Nice work! Your manager is impressed. The company is growing. You're now tasked 
 6. Also after successful submission, the form in the `employee-info` div is replaced with the new employee's info (Show Page).
 
 ### C. Updating Employee Status
+![](update-example.gif)
 Great Work! Unfortunately, the company isn't doing so well and needs to layoff a few individuals. They don't want them deleted from the database completely though. Your final task is to allow the app to toggle active status.
 
 7. Add a button to the employee show page that, when clicked, allows their active status to toggle between true and false.
