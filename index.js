@@ -87,7 +87,6 @@ const printTheStuff = info => {
 const forEachObject = object => {
     // Get the navbar
     const theNavbar = document.getElementById("employee-list")
-    const infoBox = document.getElementById("employee-info")
 
     // Make the li with the text
     const oneLi = document.createElement('a')
