@@ -12,8 +12,7 @@ Run `json-server db.json --watch --port 3003` to run your backend server on port
     - Their avatar
     - Their full name
     - Their job title
-    - Their job description
-    - The date they started with the company
+    - Their active status
 
 Be sure to look over the data structure in the json file.
 
@@ -37,7 +36,8 @@ Great Work! Unfortunately, the company isn't doing so well and needs to layoff a
 You're bored one day and decide you want to spice up the app. Maybe try implementing some of the below?
 
 9. Currently, the names in the sidebar aren't in order. Try ordering them by last name.
-10. This app uses the Materialize CSS framework. Maybe you could incorporate some of its elements to make the app more visually appealing?
+10. There is extra info in the database (job description and start date). Try displaying them on the show page and including them in the new employee form.
+11. This app uses the Materialize CSS framework. Maybe you could incorporate some of its elements to make the app more visually appealing?
 
 # Fin
 You've done amazing work. Unfortunately, the company is filing for bankruptcy. You won't lose what you've learned here though. Onto your next endeavor!
