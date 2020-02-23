@@ -38,7 +38,7 @@ Great Work! Unfortunately, the company isn't doing so well and needs to layoff a
 You're bored one day and decide you want to spice up the app. Maybe try implementing some of the below?
 
 9. Currently, the names in the sidebar aren't in order. Try ordering them by last name.
-10. There is extra info in the database (job description and start date). Try displaying them on the show page and including them in the new employee form.
+10. There is extra info in the database (job description, start date, ID number). Try displaying them on the show page and updating the new employee form to reflect this. You won't have to include ID# in the form.
 11. This app uses the Materialize CSS framework. Maybe you could incorporate some of its elements to make the app more visually appealing?
 
 # Fin
